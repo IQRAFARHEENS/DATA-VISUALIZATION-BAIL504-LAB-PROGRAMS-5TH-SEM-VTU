@@ -62,7 +62,7 @@ Each program folder is self-contained — its own README, dataset, workbook/repo
 ## 👤 Author
 
 **Iqra Farheen S**
-B.E. Computer Science (AI & ML), Dr. T. Thimmaiah Institute of Technology (VTU), KGF
+B.E. Computer Science (AI & ML)
 
 ---
 
