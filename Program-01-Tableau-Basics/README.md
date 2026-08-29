@@ -48,10 +48,10 @@ Before starting, take a moment to identify these on your screen once Tableau is 
 
 ### Step 1: Connect to the Data Source
 
-1. Open **Tableau Desktop**.
+1. Open **Tableau Desktop.{Reference 1-tableau-start-page.png}**
 2. On the **Start Page**, under **Connect**, click **To a File → Text File**.
-3. Browse to the location of `vgsales.csv` and click **Open**.
-4. Tableau will show a **data preview**. Verify the column names and data types; rename columns if needed.
+3. Browse to the location of `vgsales.csv` and click **Open**.**{Reference 2-Select-vgsales-dataset.png}**
+4. Tableau will show a **data preview**. Verify the column names and data types; rename columns if needed.**{Reference 3-vgsales-data-preview.png}**
 5. Click the **Sheet 1** tab at the bottom of the screen to move to your first worksheet.
 
 > 💡 **Tip:** Check that fields like `Global_Sales`, `NA_Sales`, `EU_Sales`, `JP_Sales` are recognized as **Measures**, and fields like `Platform`, `Genre`, `Publisher` are recognized as **Dimensions**. Tableau usually does this automatically based on data type.
@@ -73,7 +73,7 @@ Before starting, take a moment to identify these on your screen once Tableau is 
 3. Tableau will automatically generate a **bar chart**.
 4. If the values don't look aggregated correctly:
    - Right-click **Global_Sales** (in the Rows shelf or Data Pane) → **Measure** → select **Sum**.
-5. Rename the sheet tab (bottom) to **"Global Sales by Genre"** for clarity.
+5. Rename the sheet tab (bottom) to **"Global Sales by Genre"** for clarity.**{Reference 4-global-sales-by-genre-initial.png and 8-global-sales-by-genre-filtered.png }**
 
 ---
 
@@ -81,7 +81,7 @@ Before starting, take a moment to identify these on your screen once Tableau is 
 
 1. Click on the **Global_Sales axis** (or the small sort icon that appears on the toolbar/axis).
 2. Choose **Sort Descending** so genres with the highest sales appear first.
-3. Observe how Action/Sports genres typically top the chart.
+3. Observe how Action/Sports genres typically top the chart. **{Reference 5-global-sales-by-genre-sorted.png and 6-sort-genre-by-global-sales.png}**
 
 ---
 
@@ -90,7 +90,7 @@ Before starting, take a moment to identify these on your screen once Tableau is 
 1. Drag **Year** onto the **Filters** shelf.
 2. In the dialog box that appears, choose **Range of Years** (or select individual years).
 3. Set the range, e.g., **2000 to 2016**, and click **OK**.
-4. The bar chart will now only reflect data from the selected year range.
+4. The bar chart will now only reflect data from the selected year range. **{Reference 7-year-filter-dialog.png)**
 
 **Optional — Create a Dynamic Animated View:**
 1. Drag **Year** onto the **Pages** shelf as well.
@@ -108,7 +108,7 @@ Before starting, take a moment to identify these on your screen once Tableau is 
 5. Tableau may show a bar chart by default — click the **Show Me** panel (top-right) and select the **Line Chart** icon to convert it into a line chart.
 6. Drag **Genre** onto the **Marks card** (specifically onto the **Color** button in the Marks card).
 7. This will split the single trend line into multiple colored lines — one per genre — letting you compare trends across genres over the years.
-
+**{Reference 9-global-sales-trend-by-year.png}**
 ---
 
 ### Step 7: Build the Dashboard
@@ -122,7 +122,7 @@ Before starting, take a moment to identify these on your screen once Tableau is 
 5. Resize each worksheet within the dashboard by dragging its borders.
 6. (Optional) Add a **Text object** as a title, e.g., "Video Game Sales Dashboard," using **Objects → Text** from the left panel.
 7. (Optional) Use dashboard **filter actions**: click a bar in the "Global Sales by Genre" chart → use the filter icon that appears → this can dynamically filter the line chart to highlight the selected genre's trend.
-
+**{Reference 10-program-1-dashboard.png}**
 ---
 
 ### Step 8: Save Your Work
@@ -142,15 +142,17 @@ Program1-Tableau-Basics/
 ├── vgsales.csv                   ← dataset used
 ├── Program1_Tableau_Basics.twbx  ← packaged Tableau workbook
 └── screenshots/
-    ├── 01_data_preview.png
-    ├── 02_bar_chart_genre.png
-    ├── 03_sorted_bar_chart.png
-    ├── 04_year_filter.png
-    ├── 05_line_chart_trend.png
-    └── 06_dashboard.png
+├── 1-tableau-start-page.png
+├── 2-select-vgsales-dataset.png
+├── 3-vgsales-data-preview.png
+├── 4-global-sales-by-genre-initial.png
+├── 5-global-sales-by-genre-sorted.png
+├── 6-sort-genre-by-global-sales.png
+├── 7-year-filter-dialog.png
+├── 8-global-sales-by-genre-filtered.png
+├── 9-global-sales-trend-by-year.png
+└── 10-program-1-dashboard.png
 ```
-
-> 💡 Add a screenshot after each major step (data preview, bar chart, sorted chart, filtered view, line chart, final dashboard) — this makes the README self-explanatory even without opening Tableau.
 
 ---
 
