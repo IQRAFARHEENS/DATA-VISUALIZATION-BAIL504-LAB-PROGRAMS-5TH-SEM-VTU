@@ -31,13 +31,23 @@ Each program is built in **Tableau** or **Power BI** and lives in its own folder
 DV-Lab-BAIL504/
 │
 ├── README.md                              ← this file (master index)
-│
+
 ├── Program-01-Tableau-Basics/
 │   ├── README.md
 │   ├── vgsales.csv
 │   ├── Program-1-Tableau-VGSales.twbx
-│   └── Screenshots/
-│
+│   └── Screenshots
+            ├── 1-tableau-start-page.png
+            ├── 2-select-vgsales-dataset.png
+            ├── 3-vgsales-data-preview.png
+            ├── 4-global-sales-by-genre-initial.png
+            ├── 5-global-sales-by-genre-sorted.png
+            ├── 6-sort-genre-by-global-sales.png
+            ├── 7-year-filter-dialog.png
+            ├── 8-global-sales-by-genre-filtered.png
+            ├── 9-global-sales-trend-by-year.png
+            └── 10-program-1-dashboard.png
+
 ├── Program-02-Connecting-Data-Source/
 │   └── (same pattern)
 │
