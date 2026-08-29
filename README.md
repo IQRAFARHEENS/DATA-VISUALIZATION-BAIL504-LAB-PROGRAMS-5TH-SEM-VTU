@@ -66,6 +66,4 @@ B.E. Computer Science (AI & ML), Dr. T. Thimmaiah Institute of Technology (VTU),
 
 ---
 
-## 📚 Reference
 
-Lab Manual: *Data Visualization Lab 2024–2025*, Dept. of CSE (AI & ML), Dr. TTIT.
