@@ -1,13 +1,3 @@
-Yes. Since you want **Program 2 README in the same standard and detail level as Program 1**, I’ll keep the **manual's exact structure, terminology, and procedure**, while reflecting what you actually used in your adapted dataset and Tableau work.
-
-I’ll also keep the **MySQL part at the end as a note**, because your manual says “After installing it, we have to connect to MySQL,” but you have not installed MySQL yet. I will **not invent MySQL steps that you have not performed**.
-
-Copy everything below into:
-
-`Program-02-Connecting-Data-Source/README.md`
-
----
-
 # Program 2: Connecting to Data Source – Connecting to Database & Different Types of Tableau Joins
 
 ### Connecting to Data Source, Tableau Joins & Visualization Based on Joins
