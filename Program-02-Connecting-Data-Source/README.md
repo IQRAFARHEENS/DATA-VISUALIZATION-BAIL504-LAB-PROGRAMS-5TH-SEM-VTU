@@ -1,6 +1,6 @@
-# Program 2: Connecting to Data Source – Connecting to Database & Different Types of Tableau Joins
 
-### Connecting to Data Source, Tableau Joins & Visualization Based on Joins
+# Program 2: Connecting to Data Source – Tableau Joins
+### Connecting to Data Source, Different Types of Tableau Joins & Visualization
 
 **Dataset used:** `Program-2-Tableau-Joins-Adapted (1).xlsx`
 
@@ -8,411 +8,813 @@
 
 ## 📌 Aim
 
-To understand how to connect Tableau to an Excel data source, work with multiple tables, establish relationships between tables using a common field, understand different types of Tableau joins, and create a visualization based on the joined data.
+To understand how to connect an Excel data source to Tableau, work with multiple tables, establish a connection using a common field, and perform different types of Tableau joins.
 
-The program demonstrates **Inner Join, Left Join, Right Join, and Full Outer Join** using employee demographic and salary information.
+This program demonstrates:
+
+- Connecting an Excel workbook to Tableau
+- Working with multiple tables
+- Identifying a common field between tables
+- Creating a relationship between tables
+- Understanding the physical layer in Tableau
+- Creating an **Inner Join**
+- Creating a **Left Join**
+- Creating a **Right Join**
+- Creating a **Full Outer Join**
+- Creating a bar chart using joined data
+- Sorting the visualization in descending order
+- Using a measure for **Color**
+- Using a measure for **Label**
 
 ---
 
-## 🗂️ 1. Dataset Used
+# 🗂️ 1. Dataset Used
 
 The dataset used for this program is:
 
 `Program-2-Tableau-Joins-Adapted (1).xlsx`
 
-The Excel workbook contains multiple sheets that can be used as separate tables in Tableau.
+The Excel workbook contains three related sheets:
 
-### Main Tables Used
+1. **Demographics**
+2. **Salary**
+3. **Team Details**
 
-#### Demographics
+For the main join demonstration, the following two tables are used:
 
-The **Demographics** table contains employee-related information such as:
+- `Demographics`
+- `Salary`
 
-| Field             | Description                                 |
-| ----------------- | ------------------------------------------- |
-| `Employee ID`     | Unique identification number of an employee |
-| `Nameof Employee` | Name of the employee                        |
-| `Employee Gender` | Gender of the employee                      |
-| `Start Date`      | Employee starting date                      |
-
-#### Salary
-
-The **Salary** table contains salary-related information:
-
-| Field             | Description                                   |
-| ----------------- | --------------------------------------------- |
-| `EmployeeID`      | Employee identification number                |
-| `Employee Salary` | Salary of the employee                        |
-| `Bonus Percent`   | Bonus percentage associated with the employee |
-
-### Common Field
-
-The two tables are connected using:
+The common field used to connect the tables is:
 
 **`Employee ID`**
 
-This common field allows Tableau to relate/join the employee demographic information with the corresponding salary information.
+---
 
-> 💡 **Important:** A common field such as `Employee ID` is required to establish the connection between the two tables.
+## 1.1 Demographics Table
+
+The `Demographics` table contains basic employee information.
+
+| Field | Description |
+|---|---|
+| `Employee ID` | Unique identifier of the employee |
+| `Nameof Employee` | Name of the employee |
+| `Employee Gender` | Gender of the employee |
+| `Start Date` | Employee's start date |
 
 ---
 
-# 🔌 2. Connecting to the Excel Data Source
+## 1.2 Salary Table
 
-### Step 1: Open Tableau
+The `Salary` table contains employee salary information.
+
+| Field | Description |
+|---|---|
+| `EmployeeID` | Employee identifier |
+| `Employee Salary` | Salary of the employee |
+| `Bonus Percent` | Employee bonus percentage |
+
+---
+
+## 1.3 Team Details Table
+
+The workbook also contains a third sheet called `Team Details`.
+
+It contains:
+
+| Field | Description |
+|---|---|
+| `EmployeeID` | Employee identifier |
+| `Team` | Employee's team |
+| `SeniorManagement` | Indicates senior management status |
+| `LastLoginTime` | Employee's last login time |
+
+The main join demonstration in this program uses the **Demographics** and **Salary** tables.
+
+---
+
+# 🔑 2. Common Field Used for Joining
+
+When combining two tables, Tableau needs a field that can be used to match records.
+
+In this program, the common field is:
+
+**`Employee ID`**
+
+The relationship between the two main tables is:
+
+```text
+Demographics.Employee ID = Salary.EmployeeID
+````
+
+This allows Tableau to associate information belonging to the same employee.
+
+For example:
+
+### Demographics
+
+| Employee ID | Nameof Employee | Gender |
+| ----------: | --------------- | ------ |
+|           1 | Douglas         | Male   |
+|           2 | Thomas          | Male   |
+|           3 | Maria           | Female |
+
+### Salary
+
+| EmployeeID | Employee Salary |
+| ---------: | --------------: |
+|          1 |           97308 |
+|          2 |           61933 |
+|          3 |          130590 |
+
+Employee ID `1` in Demographics corresponds to Employee ID `1` in Salary.
+
+Therefore, Tableau can combine the information:
+
+| Employee ID | Name    | Gender | Salary |
+| ----------: | ------- | ------ | -----: |
+|           1 | Douglas | Male   |  97308 |
+
+---
+
+# 🔌 3. Connecting to Excel Files in Tableau
+
+## Step 1: Open Tableau
 
 1. Open **Tableau Public**.
 2. On the Start Page, locate the **Connect** section on the left side.
-3. Under **To a File**, select **Microsoft Excel**.
 
 ---
 
-### Step 2: Select the Dataset
+## Step 2: Select Microsoft Excel
 
-1. Browse to the location where the dataset is stored.
-2. Select:
+Under:
 
-`Program-2-Tableau-Joins-Adapted (1).xlsx`
+**To a File**
 
-3. Click **Open**.
-4. Tableau will display the sheets available in the Excel workbook in the **Data Source** page.
+select:
 
-**Screenshot:** `Connecting dataset`
+**Microsoft Excel**
 
 ---
 
-### Step 3: View the Available Sheets
+## Step 3: Select the Dataset
 
-After connecting the Excel file, Tableau displays the available sheets on the left side.
+Browse to the location where the dataset is saved.
 
-The dataset used in this program contains sheets including:
+Select:
 
-* **Demographics**
-* **Salary**
-* **Team Details**
+```text
+Program-2-Tableau-Joins-Adapted (1).xlsx
+```
 
-The required tables can be dragged from the Sheets section into the workspace.
-
-**Screenshot:** `Demographic table`
+Click **Open**.
 
 ---
 
-# 🔗 3. Connecting Demographics and Salary Tables
+## Step 4: View the Available Sheets
 
-The **Demographics** and **Salary** tables contain a common field called **Employee ID**.
+After opening the workbook, Tableau displays the sheets available in the Excel file.
 
-This field is used to establish the connection between the two tables.
+The available sheets are:
 
-### Step 1: Add the Demographics Table
+* `Demographics`
+* `Salary`
+* `Team Details`
 
-1. Drag the **Demographics** table from the left-side Sheets section.
-2. Drop it into the main Data Source workspace.
-3. Tableau displays the columns and records available in the table.
+These tables can be dragged into the Tableau Data Source workspace.
 
----
-
-### Step 2: Add the Salary Table
-
-1. Drag the **Salary** table into the workspace.
-2. Place it near the **Demographics** table.
-3. Tableau detects the relationship between the tables using the common field **Employee ID**.
-
-**Screenshot:** `Demographics and Salary Join`
+**Screenshot:** `01-connecting-dataset.png`
 
 ---
 
-### Step 3: Verify the Relationship
+# 📊 4. Adding the Demographics Table
 
-The relationship is established as:
+1. From the Sheets section on the left, locate **Demographics**.
+2. Drag **Demographics** into the Data Source workspace.
+3. Tableau displays the fields available in the table.
+4. The table contains employee demographic information.
+
+**Screenshot:** `02-demographics-table.png`
+
+---
+
+# 🔗 5. Adding the Salary Table
+
+1. From the Sheets section, locate **Salary**.
+2. Drag **Salary** next to the `Demographics` table.
+3. Tableau identifies the common field.
+4. The common field is:
+
+```text
+Employee ID
+```
+
+The relationship is:
 
 ```text
 Demographics.Employee ID = Salary.EmployeeID
 ```
 
-The connected tables can now be used to analyze employee information together with salary information.
+**Screenshot:** `03-demographics-and-salary-join.png`
 
 ---
 
-# 🔄 4. Different Types of Tableau Joins
+# 🧩 6. Relationship and Physical Layer
 
-Once the **Demographics** and **Salary** tables are connected, Tableau allows different types of joins.
+Tableau first represents the connection between the tables in the logical layer.
 
-The four joins demonstrated in this program are:
-
-1. **Inner Join**
-2. **Left Join**
-3. **Right Join**
-4. **Full Outer Join**
-
-The join type determines which records are returned from the two tables.
-
----
-
-## 🟢 4.1 Inner Join
-
-### Description
-
-An **Inner Join** returns only the records where there is a matching value in **both tables**.
-
-In this program, only employees whose `Employee ID` exists in both the **Demographics** and **Salary** tables will be returned.
-
-### How to Create an Inner Join
-
-1. Place the **Demographics** table in the Data Source workspace.
-2. Drag the **Salary** table next to it.
-3. Click the join/relationship area between the two tables.
-4. Select **Inner Join**.
-5. Verify that the common field is:
+The two tables are connected using:
 
 ```text
 Employee ID = EmployeeID
 ```
 
-### Result
+To create the traditional Tableau joins used in this program:
 
-Only matching employee records from both tables are included.
+1. Double-click the `Demographics` logical table.
+2. Tableau opens the physical layer.
+3. The Demographics table appears in the physical layer.
+4. Add the `Salary` table to the physical layer.
+5. Tableau displays the Join configuration.
 
-**Screenshot:** `Inner join`
+The Join configuration provides:
+
+* Inner
+* Left
+* Right
+* Full Outer
 
 ---
 
-## 🔵 4.2 Left Join
+# 🔄 7. Types of Tableau Joins
 
-### Description
+A **Join** combines records from two tables based on a common field.
+
+In this program, the common field is:
+
+```text
+Employee ID
+```
+
+The four join types demonstrated are:
+
+1. Inner Join
+2. Left Join
+3. Right Join
+4. Full Outer Join
+
+To understand the differences clearly, consider the following example.
+
+---
+
+## Example Tables
+
+### Demographics Table
+
+| Employee ID | Name    |
+| ----------: | ------- |
+|           1 | Douglas |
+|           2 | Thomas  |
+|           3 | Maria   |
+|           4 | Jerry   |
+|           5 | Larry   |
+
+### Salary Table
+
+| EmployeeID | Employee Salary |
+| ---------: | --------------: |
+|          1 |           97308 |
+|          2 |           61933 |
+|          3 |          130590 |
+|          6 |           75000 |
+
+Here:
+
+* Employee IDs `1, 2, 3` exist in both tables.
+* Employee IDs `4, 5` exist only in Demographics.
+* Employee ID `6` exists only in Salary.
+
+This example makes it easy to understand what each join returns.
+
+---
+
+# 🟢 7.1 Inner Join
+
+## Definition
+
+An **Inner Join** returns only the records where the common field has a matching value in **both tables**.
+
+The join condition is:
+
+```text
+Demographics.Employee ID = Salary.EmployeeID
+```
+
+Only Employee IDs that appear in both tables are returned.
+
+---
+
+## Example
+
+From the example:
+
+### Matching Employee IDs
+
+```text
+1 → exists in both
+2 → exists in both
+3 → exists in both
+```
+
+Therefore, the Inner Join result is:
+
+| Employee ID | Name    | Employee Salary |
+| ----------: | ------- | --------------: |
+|           1 | Douglas |           97308 |
+|           2 | Thomas  |           61933 |
+|           3 | Maria   |          130590 |
+
+Employee IDs `4`, `5`, and `6` are not included because they do not have matching records in both tables.
+
+---
+
+## How to Create Inner Join in Tableau
+
+1. Place `Demographics` in the physical layer.
+2. Add `Salary`.
+3. Click the Join configuration.
+4. Select **Inner Join**.
+5. Verify:
+
+```text
+Employee ID = EmployeeID
+```
+
+6. Tableau returns only matching records.
+
+**Screenshot:** `04-inner-join.png`
+
+---
+
+## Result
+
+The Inner Join keeps only records common to both tables.
+
+```text
+Demographics ∩ Salary
+        ↓
+Matching records only
+```
+
+---
+
+# 🔵 7.2 Left Join
+
+## Definition
 
 A **Left Join** returns:
 
-* All records from the **left table — Demographics**
-* Matching records from the **right table — Salary**
+* All records from the **left table**
+* Matching records from the **right table**
 
-If an employee exists in Demographics but has no matching record in Salary, the salary-related fields will contain **NULL** values.
+In this program:
 
-### How to Create a Left Join
+```text
+Left Table  = Demographics
+Right Table = Salary
+```
 
-1. Keep **Demographics** as the left table.
-2. Keep **Salary** as the right table.
-3. Open the join settings.
+Therefore, all records from Demographics are retained.
+
+---
+
+## Example
+
+Demographics contains:
+
+```text
+1, 2, 3, 4, 5
+```
+
+Salary contains:
+
+```text
+1, 2, 3, 6
+```
+
+The Left Join keeps **all Demographics records**.
+
+The result is:
+
+| Employee ID | Name    | Employee Salary |
+| ----------: | ------- | --------------: |
+|           1 | Douglas |           97308 |
+|           2 | Thomas  |           61933 |
+|           3 | Maria   |          130590 |
+|           4 | Jerry   |            NULL |
+|           5 | Larry   |            NULL |
+
+Employee IDs `4` and `5` are retained because they exist in the left table.
+
+Since no matching salary information exists for them, their salary values are:
+
+`NULL`
+
+---
+
+## How to Create Left Join in Tableau
+
+1. Keep `Demographics` as the left table.
+2. Keep `Salary` as the right table.
+3. Open the Join configuration.
 4. Select **Left Join**.
-5. Verify the join condition:
+5. Verify:
 
 ```text
 Employee ID = EmployeeID
 ```
 
-### Result
-
-All employee records from the Demographics table are retained, even when corresponding salary information is missing.
-
-**Screenshot:** `Left join`
+**Screenshot:** `05-left-join.png`
 
 ---
 
-## 🟠 4.3 Right Join
+## Result
 
-### Description
+All records from Demographics are retained.
+
+```text
+All Demographics
+       +
+Matching Salary
+```
+
+---
+
+# 🟠 7.3 Right Join
+
+## Definition
 
 A **Right Join** returns:
 
-* All records from the **right table — Salary**
-* Matching records from the **left table — Demographics**
+* All records from the **right table**
+* Matching records from the **left table**
 
-If a salary record does not have a matching employee record in Demographics, the demographic fields will contain **NULL** values.
+In this program:
 
-### How to Create a Right Join
+```text
+Left Table  = Demographics
+Right Table = Salary
+```
 
-1. Keep **Demographics** as the left table.
-2. Keep **Salary** as the right table.
-3. Open the join settings.
+Therefore, all Salary records are retained.
+
+---
+
+## Example
+
+Salary contains:
+
+```text
+1, 2, 3, 6
+```
+
+Demographics contains:
+
+```text
+1, 2, 3, 4, 5
+```
+
+The Right Join keeps **all Salary records**.
+
+The result is:
+
+| Employee ID | Name    | Employee Salary |
+| ----------: | ------- | --------------: |
+|           1 | Douglas |           97308 |
+|           2 | Thomas  |           61933 |
+|           3 | Maria   |          130590 |
+|           6 | NULL    |           75000 |
+
+Employee ID `6` is retained because it exists in the right table.
+
+Since there is no matching employee information in Demographics, the employee name is:
+
+`NULL`
+
+---
+
+## How to Create Right Join in Tableau
+
+1. Keep `Demographics` as the left table.
+2. Keep `Salary` as the right table.
+3. Open the Join configuration.
 4. Select **Right Join**.
-5. Verify the join condition:
+5. Verify:
 
 ```text
 Employee ID = EmployeeID
 ```
 
-### Result
-
-All records from the Salary table are retained, including salary records for which matching employee information is not available.
-
-**Screenshot:** `Right join`
+**Screenshot:** `06-right-join.png`
 
 ---
 
-## 🟣 4.4 Full Outer Join
+## Result
 
-### Description
+All records from Salary are retained.
 
-A **Full Outer Join** returns all records from both tables.
+```text
+All Salary
+    +
+Matching Demographics
+```
+
+---
+
+# 🟣 7.4 Full Outer Join
+
+## Definition
+
+A **Full Outer Join** returns **all records from both tables**.
 
 It includes:
 
-* Matching records from both tables
-* Records available only in Demographics
-* Records available only in Salary
+* Matching records
+* Records found only in Demographics
+* Records found only in Salary
 
-Where there is no matching record on one side, Tableau displays **NULL** values for the missing fields.
+If a record has no matching record in the other table, Tableau displays `NULL` for the missing fields.
 
-### How to Create a Full Outer Join
+---
 
-1. Keep **Demographics** as the left table.
-2. Keep **Salary** as the right table.
-3. Open the join settings.
+## Example
+
+Demographics contains:
+
+```text
+1, 2, 3, 4, 5
+```
+
+Salary contains:
+
+```text
+1, 2, 3, 6
+```
+
+The Full Outer Join contains:
+
+```text
+1, 2, 3, 4, 5, 6
+```
+
+The result is:
+
+| Employee ID | Name    | Employee Salary |
+| ----------: | ------- | --------------: |
+|           1 | Douglas |           97308 |
+|           2 | Thomas  |           61933 |
+|           3 | Maria   |          130590 |
+|           4 | Jerry   |            NULL |
+|           5 | Larry   |            NULL |
+|           6 | NULL    |           75000 |
+
+All records from both tables are retained.
+
+---
+
+## How to Create Full Outer Join in Tableau
+
+1. Keep `Demographics` as the left table.
+2. Keep `Salary` as the right table.
+3. Open the Join configuration.
 4. Select **Full Outer Join**.
-5. Verify the join condition:
+5. Verify:
 
 ```text
 Employee ID = EmployeeID
 ```
 
-### Result
-
-All employee and salary records are included, whether or not a matching record exists in the other table.
-
-**Screenshot:** `Full outer join`
+**Screenshot:** `07-full-outer-join.png`
 
 ---
 
-# 📊 5. Comparison of Tableau Joins
+## Result
 
-| Join Type           | Records Returned                                        |
-| ------------------- | ------------------------------------------------------- |
-| **Inner Join**      | Only matching records from both tables                  |
-| **Left Join**       | All records from Demographics + matching Salary records |
-| **Right Join**      | All records from Salary + matching Demographics records |
-| **Full Outer Join** | All records from both tables                            |
-
-### Simple Representation
+All records from both tables are retained.
 
 ```text
-INNER JOIN
-Only matching records
-Demographics ∩ Salary
-
-
-LEFT JOIN
-All Demographics + matching Salary
-
-
-RIGHT JOIN
-All Salary + matching Demographics
-
-
-FULL OUTER JOIN
-All Demographics + All Salary
+All Demographics
+       +
+All Salary
 ```
-
-> 💡 **Key Point:** The main difference between these joins is which unmatched records are retained.
 
 ---
 
-# 📈 6. Creating a Visualization Based on Joins
+# 📋 8. Comparison of Join Types
 
-After performing the joins, the joined data can be used to create visualizations.
+| Join Type           | Left Table Records | Right Table Records | Main Result                  |
+| ------------------- | ------------------ | ------------------- | ---------------------------- |
+| **Inner Join**      | Matching only      | Matching only       | Only common records          |
+| **Left Join**       | All                | Matching only       | All left-table records       |
+| **Right Join**      | Matching only      | All                 | All right-table records      |
+| **Full Outer Join** | All                | All                 | All records from both tables |
 
-The manual specifies creating a **Bar Chart** showing employees and their salary.
+---
+
+# 💡 9. Easy Way to Remember the Joins
+
+### Inner Join
+
+**Only what is common**
+
+```text
+A ∩ B
+```
+
+### Left Join
+
+**Everything from the left**
+
+```text
+A + matching B
+```
+
+### Right Join
+
+**Everything from the right**
+
+```text
+B + matching A
+```
+
+### Full Outer Join
+
+**Everything from both**
+
+```text
+A + B
+```
+
+---
+
+# 📈 10. Creating a Visualization Based on Joins
+
+After performing the joins, the joined data can be used to create a visualization.
+
+The laboratory exercise requires a **Bar Chart**.
 
 ---
 
 ## Step 1: Open Sheet 1
 
-1. Click the **Sheet 1** tab at the bottom of Tableau.
-2. This opens the worksheet where the visualization is created.
+Click the **Sheet 1** tab at the bottom of Tableau.
+
+This opens the worksheet where the visualization is created.
 
 ---
 
-## Step 2: Create the Bar Chart
+## Step 2: Add Employee ID to Columns
 
-1. Drag **Employee ID** to the **Columns** shelf.
-2. Drag **Employee Salary** to the **Rows** shelf.
-3. Tableau creates a bar chart showing salary values for the employees.
+1. Locate **Employee ID** in the Data Pane.
+2. Drag `Employee ID` to the **Columns** shelf.
 
-The resulting visualization represents:
+This places the employee IDs along the horizontal axis.
+
+---
+
+## Step 3: Add Employee Salary to Rows
+
+1. Locate `Employee Salary`.
+2. Drag `Employee Salary` to the **Rows** shelf.
+3. Tableau creates a bar chart.
+
+The basic configuration is:
 
 ```text
-Employee ID → Columns
-Employee Salary → Rows
+Columns → Employee ID
+Rows → Employee Salary
 ```
 
-**Screenshot:** `Employee Salary by Employee ID.`
+**Screenshot:** `08-employee-salary-by-employee-id.png`
 
 ---
 
-## Step 3: Sort the Visualization
+# 📊 11. Understanding Sheet 1
 
-The manual requires the visualization to be sorted in **descending order**.
+The Sheet 1 visualization displays the salary associated with each employee ID.
 
-1. Select the sorting option in the worksheet.
-2. Sort the salary values in **descending order**.
-3. The employees with higher salary values will appear before those with lower salary values.
+The salary field is treated as a measure and is aggregated by Tableau.
 
-This makes it easier to compare employee salary values.
+Therefore, the Rows shelf displays:
 
----
+```text
+SUM(Employee Salary)
+```
 
-## Step 4: Add Employee Salary to Marks
+The height of each bar represents the salary value.
 
-To provide additional visual information:
-
-1. Drag **Employee Salary** to the **Marks** card.
-2. Select **Color**.
-3. Select **Label**.
-
-This allows the salary measure to be used for visual encoding and labeling within the chart.
+A higher bar represents a higher salary value.
 
 ---
 
-# 🖥️ 7. Final Visualization
+# 🔽 12. Sort the Salary in Descending Order
 
-The completed Sheet 1 visualization displays **Employee Salary by Employee ID** using a bar chart.
+The laboratory instructions require the salary values to be sorted in descending order.
 
-### Configuration Used
+### Steps
+
+1. Select the salary visualization.
+2. Use Tableau's **Sort Descending** option.
+3. Tableau rearranges the bars according to salary.
+4. The higher salary values appear before the lower salary values.
+
+Descending order means:
+
+```text
+Highest Salary
+      ↓
+      ↓
+      ↓
+Lowest Salary
+```
+
+---
+
+# 🎨 13. Add Employee Salary to Color
+
+The laboratory instructions also require `Employee Salary` to be used for **Color**.
+
+### Steps
+
+1. Locate `Employee Salary`.
+2. Drag it to the **Color** option in the Marks card.
+
+The bars are now visually differentiated according to salary values.
+
+---
+
+# 🏷️ 14. Add Employee Salary to Label
+
+To display the salary value directly on each bar:
+
+1. Drag `Employee Salary` to the **Label** option in the Marks card.
+2. Tableau displays the salary value on the corresponding bar.
+
+The Marks card now uses:
+
+```text
+Color → Employee Salary
+Label → Employee Salary
+```
+
+---
+
+# 🖥️ 15. Final Sheet 1 Configuration
+
+The final Sheet 1 visualization uses:
 
 | Tableau Area      | Field                  |
 | ----------------- | ---------------------- |
 | **Columns**       | `Employee ID`          |
 | **Rows**          | `SUM(Employee Salary)` |
-| **Marks – Color** | `Employee Salary`      |
-| **Marks – Label** | `Employee Salary`      |
+| **Marks → Color** | `Employee Salary`      |
+| **Marks → Label** | `Employee Salary`      |
 | **Chart Type**    | Bar Chart              |
-| **Sorting**       | Descending             |
+| **Sort**          | Descending             |
 
-**Final Sheet:** `Employee Salary by Employee ID`
+### Final Worksheet Name
 
-The visualization makes it possible to compare the salary values associated with different employee IDs.
+The Sheet 1 worksheet is named:
+
+**Employee Salary by Employee ID**
 
 ---
 
-# 🗄️ 8. MySQL Connection
+# 📸 16. Screenshots
 
-The lab manual also specifies that **after installing MySQL, the dataset has to be connected to MySQL**.
+The screenshots document the major steps performed during the program.
 
-The MySQL portion is kept as a separate part of this program because the current implementation uses the supplied Excel dataset in Tableau.
-
-### Planned MySQL Workflow
-
-After installing MySQL, the general workflow specified for the database connection will be:
+Recommended naming:
 
 ```text
-Install MySQL
-      ↓
-Create/Connect to MySQL Database
-      ↓
-Load the required employee tables
-      ↓
-Connect Tableau to MySQL
-      ↓
-Select the required tables
-      ↓
-Establish Employee ID relationship/join
-      ↓
-Create the visualization
+Screenshots/
+│
+├── 01-connecting-dataset.png
+├── 02-demographics-table.png
+├── 03-demographics-and-salary-join.png
+├── 04-inner-join.png
+├── 05-left-join.png
+├── 06-right-join.png
+├── 07-full-outer-join.png
+└── 08-employee-salary-by-employee-id.png
 ```
 
-> **Note:** MySQL has not been installed for the current implementation. Therefore, the screenshots and Tableau workbook in this repository document the **Excel-based implementation of Program 2**, as specified in the main procedure of the lab manual.
+Each screenshot represents an important stage of the implementation.
 
 ---
 
-# 💾 9. Save the Tableau Workbook
+# 💾 17. Saving the Tableau Workbook
 
 After completing the joins and visualization:
 
@@ -424,28 +826,45 @@ After completing the joins and visualization:
 PROGRAM 2.twb
 ```
 
-4. Keep the workbook together with the dataset so that the work can be reviewed or reproduced.
+4. Keep the workbook and Excel dataset together in the Program 2 folder.
 
 ---
 
-# 📸 10. Screenshots
+# 🗄️ 18. MySQL Connection – Future Step
 
-The `Screenshots` folder contains the step-by-step screenshots captured while completing the program.
+The laboratory manual also mentions connecting the data source to **MySQL** after installing MySQL.
 
-| No. | Screenshot                        | Purpose                                 |
-| --- | --------------------------------- | --------------------------------------- |
-| 1   | `Connecting dataset`              | Connecting the Excel dataset to Tableau |
-| 2   | `Demographic table`               | Viewing the Demographics table          |
-| 3   | `Demographics and Salary Join`    | Connecting Demographics and Salary      |
-| 4   | `Inner join`                      | Creating an Inner Join                  |
-| 5   | `Left join`                       | Creating a Left Join                    |
-| 6   | `Right join`                      | Creating a Right Join                   |
-| 7   | `Full outer join`                 | Creating a Full Outer Join              |
-| 8   | `Employee Salary by Employee ID.` | Final Sheet 1 bar chart                 |
+The current implementation of this program uses the Excel dataset in Tableau.
+
+MySQL has not yet been installed for this implementation.
+
+The planned workflow is:
+
+```text
+Install MySQL
+       ↓
+Create/Connect to MySQL Database
+       ↓
+Load Employee Data
+       ↓
+Connect Tableau to MySQL
+       ↓
+Select Required Tables
+       ↓
+Use Employee ID as Common Field
+       ↓
+Create Joins
+       ↓
+Create Visualization
+```
+
+This section is included to document the database-connection requirement from the laboratory instructions. The current screenshots and workbook demonstrate the **Excel-based implementation**.
 
 ---
 
-# 📁 11. Repository Structure
+# 📁 19. Repository Structure
+
+The Program 2 folder is organized as follows:
 
 ```text
 Program-02-Connecting-Data-Source/
@@ -470,32 +889,69 @@ Program-02-Connecting-Data-Source/
 
 ---
 
-# 🎯 12. Learning Outcomes
+# 🎯 20. Learning Outcomes
 
 After completing this program, the learner should be able to:
 
-* Connect Tableau to an **Excel data source**.
-* Identify multiple sheets/tables within an Excel workbook.
-* Understand how tables can be connected using a **common field**.
-* Use `Employee ID` as the common field between Demographics and Salary.
-* Understand the concept of **Tableau Joins**.
-* Create an **Inner Join**.
-* Create a **Left Join**.
-* Create a **Right Join**.
-* Create a **Full Outer Join**.
-* Understand how unmatched records are handled using **NULL values**.
-* Create a **bar chart based on joined data**.
+* Connect an Excel workbook to Tableau.
+* Identify different sheets in an Excel workbook.
+* Understand tables and fields.
+* Identify a common field between two tables.
+* Use `Employee ID` as a join key.
+* Understand Tableau relationships.
+* Open the physical layer in Tableau.
+* Create an Inner Join.
+* Create a Left Join.
+* Create a Right Join.
+* Create a Full Outer Join.
+* Understand how unmatched records produce `NULL` values.
+* Create a bar chart using joined data.
 * Sort salary values in descending order.
-* Use the **Marks card** for Color and Label.
-* Understand the basic workflow for connecting Tableau with **MySQL**.
+* Use a measure on the Color option.
+* Use a measure on the Label option.
+* Understand the basic workflow for connecting Tableau with MySQL.
 
 ---
 
-# ✅ Result
+# ✅ 21. Result
 
-The Excel dataset containing employee demographic and salary information was successfully connected to Tableau. The **Demographics** and **Salary** tables were connected using the common field **Employee ID**, and the different types of Tableau joins — **Inner, Left, Right, and Full Outer Join** — were explored.
+The Excel workbook was successfully connected to Tableau.
 
-A bar chart was then created in **Sheet 1** to visualize **Employee Salary by Employee ID**, with salary values sorted in descending order and used for color and labeling.
+The `Demographics` and `Salary` tables were connected using the common field:
 
-The program provides practical understanding of **data-source connections, table joins, and visualization of joined data in Tableau**.
+```text
+Employee ID
+```
 
+The four major Tableau join types were studied and demonstrated:
+
+* **Inner Join**
+* **Left Join**
+* **Right Join**
+* **Full Outer Join**
+
+A bar chart was created in **Sheet 1** using:
+
+```text
+Employee ID → Columns
+Employee Salary → Rows
+```
+
+The salary visualization was sorted in descending order, and `Employee Salary` was added to the **Color** and **Label** options of the Marks card.
+
+---
+
+# 🏁 22. Conclusion
+
+This program provides practical understanding of connecting Excel data to Tableau and combining related tables using different join types.
+
+The program demonstrates how the choice of join affects which records are included in the resulting dataset.
+
+By working with Inner, Left, Right, and Full Outer Joins, the learner gains a clear understanding of how Tableau handles matching and unmatched records.
+
+The joined data was then used to create a salary-based bar chart in Sheet 1, providing a practical example of how joined datasets can be transformed into visual insights.
+
+```
+
+Also, the MySQL section is clearly marked as **future/not yet performed**, so your GitHub README doesn't falsely claim that you completed a MySQL connection.
+```
