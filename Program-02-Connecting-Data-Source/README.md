@@ -27,6 +27,14 @@ This program demonstrates:
 - Using a measure for **Label**
 
 ---
+# 🎥 Program Screen Recordings & Materials
+
+The complete screen recordings demonstrating the programs, along with the related reference materials, are available in the Google Drive folder below.
+
+👉 **[View Program Screen Recordings & Materials](https://drive.google.com/drive/u/0/folders/1-XTiF5Wgps7xq_2sSYLNtsT5zsXoefGu)**
+
+The recordings provide a step-by-step visual demonstration of the Tableau procedures covered in the programs.
+
 
 # 🗂️ 1. Dataset Used
 
