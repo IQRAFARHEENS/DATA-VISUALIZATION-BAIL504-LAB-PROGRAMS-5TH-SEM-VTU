@@ -754,4 +754,3 @@ The program demonstrates how charts can be formatted, filtered, and annotated to
 The use of the `Select Genre` parameter demonstrates how Tableau can create interactive visualizations where users can select a category and dynamically view the corresponding sales data.
 
 Overall, the program provides practical experience with **chart formatting, filters, calculated fields, parameters, and interactive visualizations** using the `vgsales.csv` dataset.
-
