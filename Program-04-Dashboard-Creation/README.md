@@ -371,5 +371,3 @@ The program demonstrated the use of worksheets, dashboard components, containers
 
 **Iqra Farheen**
 
-
-This version will look much more like your **Program 3 README**: clean headings → short explanation → steps → result → conclusion, instead of the current very long 500-line document.
