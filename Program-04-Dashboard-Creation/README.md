@@ -1,14 +1,3 @@
-Yes. Looking at your **Program 3 style**, I agree: Program 4 should be **clean, structured, and easy to read**, not a 500-line procedural document.
-
-Your current Program 4 README contains all the information, but it is **too long and crowded** compared with Program 3. The content itself is useful; we just need to restructure it.
-
-Your actual Program 4 covers the dataset, dashboard, containers, action filter, Tableau actions, and storytelling, so I would keep all of those but present them much more cleanly. 
-
-## Replace the entire Program 4 README with this
-
-Copy **everything below** and replace the current README content:
-
-````markdown
 # Program 4: Dashboard Design and Storytelling Using Tableau
 
 **Dashboard Components, Worksheet Containers, Action Filters & Tableau Storytelling**
