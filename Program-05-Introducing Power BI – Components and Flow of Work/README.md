@@ -254,5 +254,3 @@ The program also introduced the major components of Power BI Desktop and the bas
 
 ```
 
-```
-
