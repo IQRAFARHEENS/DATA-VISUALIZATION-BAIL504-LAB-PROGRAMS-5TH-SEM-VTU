@@ -1,390 +1,294 @@
-Program 4: Dashboard Design and Storytelling Using Tableau
-Dashboard Components, Worksheet Containers, Action Filters & Tableau Storytelling
+Yes. Looking at your **Program 3 style**, I agree: Program 4 should be **clean, structured, and easy to read**, not a 500-line procedural document.
 
-Dataset used: GDP by Country per Year_data.xlsx
+Your current Program 4 README contains all the information, but it is **too long and crowded** compared with Program 3. The content itself is useful; we just need to restructure it.
 
-📌 Aim
+Your actual Program 4 covers the dataset, dashboard, containers, action filter, Tableau actions, and storytelling, so I would keep all of those but present them much more cleanly. 
 
-To design an interactive dashboard and create a meaningful data story using Tableau Public by understanding dashboard components, worksheet placement using containers, action filters, and Tableau storytelling techniques.
+## Replace the entire Program 4 README with this
+
+Copy **everything below** and replace the current README content:
+
+````markdown
+# Program 4: Dashboard Design and Storytelling Using Tableau
+
+**Dashboard Components, Worksheet Containers, Action Filters & Tableau Storytelling**
+
+**Dataset used:** `GDP by Country per Year_data.xlsx`
+
+---
+
+## 📌 Aim
+
+To design an interactive dashboard and create a meaningful data story using Tableau Public by working with dashboard components, worksheet containers, action filters, and Tableau storytelling techniques.
+
+---
+
+## 📚 Program Overview
 
 This program demonstrates:
 
-Creating worksheets for data visualization
-Combining worksheets into a dashboard
-Understanding dashboard components
-Using containers to organize worksheets
-Creating interactive Action Filters
-Understanding different types of Tableau actions
-Creating a Story using Tableau Public
-Using story points and captions
-Applying the Tailoring-In storytelling technique
-Adding text to highlight important observations
-Publishing the Tableau workbook
-🎥 1. Program Screen Recordings & Materials
+- Creating worksheets for data visualization
+- Combining worksheets into a dashboard
+- Using dashboard components and containers
+- Creating interactive Action Filters
+- Understanding different types of Tableau actions
+- Creating a Tableau Story
+- Using story points and captions
+- Applying the Tailoring-In storytelling technique
+- Adding text to highlight important observations
 
-The complete screen recording and supporting materials for Program 4 are available in the Google Drive folder below.
+---
 
-👉 
-View Program 4 Screen Recording & Materials
+## 🎥 Screen Recording & Materials
 
-The recording demonstrates the complete implementation of the Tableau Dashboard and Storytelling program.
+The complete screen recording and supporting materials for Program 4 are available in the Google Drive folder.
 
-🗂️ 2. Dataset Used
+👉 [View Program 4 Screen Recording & Materials](PASTE_GOOGLE_DRIVE_LINK_HERE)
 
-The dataset used for this program is:
+---
 
-GDP by Country per Year_data.xlsx
+## 🗂️ Dataset Used
+
+**Dataset:** `GDP by Country per Year_data.xlsx`
 
 The dataset contains country-wise GDP Growth information across different years.
 
-Important Fields
-Field	Description
-Country	Name of the country
-Year	Year of observation
-GDP Growth	GDP growth value for the country and year
-🔌 3. Connecting to the Data Source
-Step 1: Open Tableau
-Open Tableau Public.
-Select Microsoft Excel from the Connect section.
-Browse to the location of the dataset.
-Step 2: Select the Dataset
+### Important Fields
 
-Select:
+| Field | Description |
+|---|---|
+| Country | Name of the country |
+| Year | Year of observation |
+| GDP Growth | GDP growth value for the country and year |
 
-GDP by Country per Year_data.xlsx
+---
 
-Click Open.
+## 🔌 1. Connecting to the Data Source
 
-Tableau loads the data and displays the available fields.
+1. Open **Tableau Public**.
+2. Select **Microsoft Excel** from the Connect section.
+3. Browse to the dataset location.
+4. Select `GDP by Country per Year_data.xlsx`.
+5. Click **Open**.
+6. Tableau loads the available fields.
 
-🗺️ 4. Creating the GDP Growth Map
+---
 
-The first worksheet is created to display GDP Growth geographically.
+## 🗺️ 2. Creating the GDP Growth Map
 
-Step 1: Create a New Worksheet
+A geographical map is created to visualize GDP Growth across countries.
 
-Click the Worksheet tab at the bottom of Tableau.
+### Steps
 
-Rename the worksheet:
+1. Create a new worksheet.
+2. Rename it **GDP Growth Map – 2016**.
+3. Drag **Country** to the view.
+4. Drag **GDP Growth** to **Color**.
+5. Drag **Year** to **Filters**.
+6. Select **2016**.
 
-GDP Growth Map – 2016
-Step 2: Create the Map
+### Result
 
-Drag:
+The map displays GDP Growth across different countries for the year 2016.
 
-Country → View
+---
 
-Tableau automatically creates a geographical map using the Country field.
+## 📈 3. Creating the GDP Growth Trend
 
-Step 3: Add GDP Growth
+A line chart is created to display GDP Growth over time.
 
-Drag:
+### Steps
 
-GDP Growth → Color
+1. Create a new worksheet.
+2. Rename it **GDP Growth Trend**.
+3. Drag **Year** to **Columns**.
+4. Drag **GDP Growth** to **Rows**.
+5. Drag **Country** to **Color**.
+6. Select **Line** from the Marks card.
 
-The countries are now represented using different colors based on their GDP Growth values.
+### Result
 
-Step 4: Add Year Filter
+The visualization displays the GDP Growth trend of different countries over time.
 
-Drag:
+---
 
-Year → Filters
+## 🖥️ 4. Creating the Dashboard
 
-Select:
+The map and line chart are combined into an interactive dashboard.
 
-2016
+### Steps
 
-Click OK.
+1. Create a **New Dashboard**.
+2. Rename it **GDP Growth Dashboard**.
+3. Add the following worksheets:
+   - GDP Growth Map – 2016
+   - GDP Growth Trend
+4. Arrange the worksheets using dashboard containers.
+5. Enable **Show Dashboard Title**.
+6. Set the dashboard title to **GDP Growth Dashboard**.
 
-The map now represents GDP Growth by country for 2016.
+---
 
-Result
+## 📦 5. Using Dashboard Containers
 
-The map provides a global view of GDP Growth across countries in 2016.
+Dashboard containers help organize and align worksheets and other dashboard objects.
 
-📈 5. Creating the GDP Growth Trend
+### Horizontal Container
 
-The second worksheet is created to display GDP Growth over time.
+Places dashboard objects from left to right.
 
-Step 1: Create a New Worksheet
+### Vertical Container
 
-Create a new worksheet.
+Places dashboard objects from top to bottom.
 
-Rename it:
+Containers are used to maintain proper alignment and organization of dashboard components.
 
-GDP Growth Trend
-Step 2: Add Year to Columns
+---
 
-Drag:
+## 🔄 6. Creating an Action Filter
 
-Year → Columns
+An Action Filter is created to make the dashboard interactive.
 
-The years appear along the horizontal axis.
+### Configuration
 
-Step 3: Add GDP Growth to Rows
+**Action Name:** `Country Selection Filter`
 
-Drag:
+**Source Sheet:** `GDP Growth Trend`
 
-GDP Growth → Rows
+**Target Sheet:** `GDP Growth Map – 2016`
 
-The GDP Growth values appear along the vertical axis.
+**Action:** Filter
 
-Step 4: Add Country to Color
+**Field Mapping:**
 
-Drag:
+`Country → Country`
 
-Country → Color
+**Clearing the Selection:** Show all values
 
-Each country is represented by a different line.
+### Interaction
 
-Step 5: Select Line Chart
-
-From the Marks card, select:
-
-Line
-
-The visualization now displays the GDP Growth trend for different countries over time.
-
-🖥️ 6. Creating the Dashboard
-
-The dashboard combines the map and line chart into one interactive view.
-
-Step 1: Create a New Dashboard
-
-Click:
-
-New Dashboard
-
-Rename it:
-
-GDP Growth Dashboard
-Step 2: Add the Worksheets
-
-From the Sheets section, drag:
-
-GDP Growth Map – 2016
-
-and
-
-GDP Growth Trend
-
-into the dashboard.
-
-Arrange the worksheets side-by-side.
-
-The dashboard contains:
-
-+----------------------+----------------------+
-|                      |                      |
-|      GDP MAP         |    GDP TREND         |
-|                      |                      |
-+----------------------+----------------------+
-Step 3: Add Dashboard Title
-
-Enable:
-
-Show Dashboard Title
-
-Set the title to:
-
-GDP Growth Dashboard
-📦 7. Understanding Dashboard Containers
-
-Containers are used to organize and position worksheets and other dashboard objects.
-
-Horizontal Container
-
-A Horizontal Container places objects from left to right.
-
-Example:
-
-+-------------------+-------------------+
-|       Map         |    Line Chart     |
-+-------------------+-------------------+
-Vertical Container
-
-A Vertical Container places objects from top to bottom.
-
-Example:
-
-+--------------------------------------+
-|                 Map                  |
-+--------------------------------------+
-|              Line Chart              |
-+--------------------------------------+
-
-Containers help maintain proper alignment and organization of dashboard components.
-
-🔄 8. Creating an Action Filter
-
-An Action Filter creates interaction between different worksheets.
-
-In this program, the GDP Growth Trend is used to control the GDP Growth Map.
-
-Steps
-Open:
-Dashboard → Actions
-Click:
-Add Action → Filter
-Enter the action name:
-Country Selection Filter
-Under Source Sheets, select:
-GDP Growth Trend
-Under Target Sheets, select:
-GDP Growth Map – 2016
-Set:
-Run action on → Select
-Select:
-Selected fields
-Set the field mapping:
-Country → Country
-Under clearing the selection, select:
-Show all values
-Click OK.
-Action Filter Interaction
-
-The interaction works as follows:
-
-Select Country on GDP Growth Trend
-                ↓
-        Country Selection Filter
-                ↓
-      GDP Growth Map – 2016
+Selecting a country from the GDP Growth Trend interacts with the GDP Growth Map.
 
 For example:
 
-Select India
-      ↓
-Map responds to India
+**Select India → Map responds to the selected country**
 
-This makes the dashboard interactive.
+---
 
-🧩 9. Types of Tableau Actions
+## 🧩 7. Types of Tableau Actions
 
-Tableau provides different types of actions.
+Tableau provides different types of actions:
 
-1. Filter Action
+1. **Filter Action** – Filters another worksheet based on user interaction.
+2. **Highlight Action** – Highlights related marks.
+3. **URL Action** – Opens a specified web page.
+4. **Go to Sheet Action** – Navigates to another worksheet, dashboard, or story.
+5. **Parameter Action** – Changes a parameter value through interaction.
+6. **Set Action** – Changes the members of a Tableau set.
 
-Filters another worksheet based on a user's selection.
+---
 
-2. Highlight Action
+## 📖 8. Creating a Tableau Story
 
-Highlights related marks without necessarily filtering out the remaining data.
+A Tableau Story is created using multiple story points to communicate a data narrative.
 
-3. URL Action
+### Story Name
 
-Opens a specified web page when a user interacts with a visualization.
+**GDP Growth Story**
 
-4. Go to Sheet Action
+The **Tailoring-In** storytelling approach is used.
 
-Navigates the user to another worksheet, dashboard, or story.
+### Story Flow
 
-5. Parameter Action
-
-Changes a parameter value based on user interaction.
-
-6. Set Action
-
-Changes the members of a Tableau set through interaction.
-
-📖 10. Creating a Story with Tableau Public
-
-A Tableau Story consists of multiple story points arranged to communicate a meaningful data narrative.
-
-For this program, the Tailoring-In approach is used.
-
-Tailoring-In
-
-The story begins with a big-picture view and progressively focuses on a specific detail.
-
+```text
 Global View
      ↓
 Specific Country
      ↓
 Detailed Country Trend
-🌍 11. Story Point 1 — Global View
+````
 
-Create a new story.
+---
 
-Rename it:
+## 🌍 9. Story Point 1 – Global View
 
-GDP Growth Story
+The first story point provides an overall view of GDP Growth.
 
-Add:
+**Worksheet:** `GDP Growth Map – 2016`
 
-GDP Growth Map – 2016
-Caption
+**Caption:**
+`Global GDP Growth by Country – 2016`
+
+---
+
+## 🇮🇳 10. Story Point 2 – India Selected
+
+The second story point focuses on India.
+
+### Steps
+
+1. Duplicate the first story point.
+2. Select **India** on the map.
+3. Click **Update** to save the selected state.
+
+**Caption:**
+`India – Selected Country`
+
+---
+
+## 📈 11. Story Point 3 – India GDP Growth Trend
+
+A detailed trend for India is created.
+
+**Worksheet:** `India GDP Growth Trend`
+
+### Steps
+
+1. Duplicate the GDP Growth Trend worksheet.
+2. Rename it **India GDP Growth Trend**.
+3. Apply a **Country** filter.
+4. Select **India**.
+5. Add the worksheet to the third story point.
+
+**Caption:**
+`India GDP Growth Trend (2000–2020)`
+
+---
+
+## 📝 12. Adding Text to the Story
+
+Text boxes can be used to highlight important observations.
+
+Example observation:
+
+> India's GDP Growth shows significant variation between 2000 and 2020, including a sharp decline in 2020.
+
+---
+
+## 🔗 13. Final Story Flow
+
+The final Tableau Story follows the Tailoring-In approach:
+
+```text
 Global GDP Growth by Country – 2016
-
-This story point provides the overall/global view of GDP Growth.
-
-🇮🇳 12. Story Point 2 — India Selected
-
-Duplicate the first story point.
-
-Select India on the map.
-
-Click Update to save the selected state.
-
-Caption
-India – Selected Country
-
-India is now highlighted while the story focuses on the selected country.
-
-This represents the zoom-in stage of the story.
-
-📈 13. Story Point 3 — India GDP Growth Trend
-
-A separate worksheet was created for India's GDP Growth trend.
-
-Worksheet Name
-India GDP Growth Trend
-Steps
-Duplicate the GDP Growth Trend worksheet.
-Rename it:
-India GDP Growth Trend
-Apply a Country filter.
-Select:
-India
-Add the worksheet to the third story point.
-Caption
-India GDP Growth Trend (2000–2020)
-
-This story point provides a detailed view of India's GDP Growth over time.
-
-📝 14. Adding Text to the Story
-
-Text boxes can be used to communicate important observations.
-
-For example:
-
-India's GDP Growth shows significant variation
-between 2000 and 2020, including a sharp decline
-in 2020.
-
-Text helps the audience understand the key message associated with the visualization.
-
-🔗 15. Final Story Flow
-
-The final story follows the Tailoring-In technique:
-
-Global GDP Growth by Country – 2016
-                  ↓
-           India – Selected Country
-                  ↓
+                 ↓
+          India – Selected Country
+                 ↓
        India GDP Growth Trend
-             (2000–2020)
+              (2000–2020)
+```
 
 The story progresses from:
 
-Global → Specific → Detailed
+**Global → Specific → Detailed**
 
-📸 16. Screenshots
+---
 
-The screenshots document the major stages of Program 4.
+## 📸 14. Screenshots
 
-Recommended structure:
+The following screenshots can be included to document the major stages of the program:
 
+```text
 screenshots/
 │
 ├── 01-gdp-growth-map-2016.png
@@ -395,42 +299,20 @@ screenshots/
 ├── 06-story-global-view.png
 ├── 07-story-india-selected.png
 └── 08-story-india-trend.png
+```
 
-Each screenshot represents an important stage of the implementation.
+---
 
-🎥 17. Screen Recording & Supporting Materials
+## 📁 Repository Structure
 
-The complete Program 4 screen recording and supporting materials are available in the Google Drive folder:
-
-👉 
-View Program 4 Screen Recording & Supporting Materials
-
-The recording demonstrates:
-
-Connecting the GDP dataset
-Creating the GDP Growth map
-Creating the GDP Growth trend
-Creating the dashboard
-Configuring the Action Filter
-Testing country selection
-Creating the Tableau Story
-Selecting India
-Creating the India GDP Growth Trend
-Navigating through the story points
-📁 18. Repository Structure
-
-The Program 4 folder can be organized as follows:
-
-Program-04-Dashboard-and-Storytelling/
+```text
+Program-04-Dashboard-Creation/
 │
 ├── README.md
-│
 ├── GDP by Country per Year_data.xlsx
-│
 ├── Program4_Tableau_Dashboard.twbx
 │
 └── screenshots/
-    │
     ├── 01-gdp-growth-map-2016.png
     ├── 02-gdp-growth-trend.png
     ├── 03-dashboard.png
@@ -439,69 +321,66 @@ Program-04-Dashboard-and-Storytelling/
     ├── 06-story-global-view.png
     ├── 07-story-india-selected.png
     └── 08-story-india-trend.png
-🎯 19. Learning Outcomes
+```
+
+---
+
+## 🎯 Learning Outcomes
 
 After completing this program, the learner should be able to:
 
-Create multiple worksheets in Tableau.
-Create geographical visualizations.
-Create time-series line charts.
-Combine worksheets into a dashboard.
-Understand dashboard components.
-Use horizontal and vertical containers.
-Create Action Filters.
-Understand different types of Tableau actions.
-Create interactive dashboards.
-Create Tableau Stories.
-Create and navigate story points.
-Add captions and text boxes.
-Understand the Tailoring-In storytelling technique.
-Present data as a meaningful visual narrative.
-✅ 20. Result
+* Create multiple worksheets in Tableau
+* Create geographical visualizations
+* Create time-series line charts
+* Combine worksheets into a dashboard
+* Use dashboard containers
+* Create Action Filters
+* Understand different Tableau actions
+* Create interactive dashboards
+* Create Tableau Stories
+* Create and navigate story points
+* Add captions and text boxes
+* Apply the Tailoring-In storytelling technique
+* Present data as a meaningful visual narrative
+
+---
+
+## ✅ Result
 
 The GDP dataset was successfully connected to Tableau Public.
 
 The following visualizations were created:
 
-GDP Growth Map – 2016
-GDP Growth Trend
-India GDP Growth Trend
+* **GDP Growth Map – 2016**
+* **GDP Growth Trend**
+* **India GDP Growth Trend**
 
-An interactive dashboard named:
+An interactive dashboard named **GDP Growth Dashboard** was successfully created by combining the map and line chart.
 
-GDP Growth Dashboard
+A **Country Selection Filter** was implemented to enable interaction between the GDP Growth Trend and GDP Growth Map.
 
-was successfully created by combining the map and line chart.
-
-A Country Selection Filter was implemented so that selecting a country in the GDP Growth Trend interacts with the GDP Growth Map.
-
-A Tableau Story named:
-
-GDP Growth Story
-
-was created using three story points:
+A Tableau Story named **GDP Growth Story** was created using three story points:
 
 1. Global GDP Growth by Country – 2016
 2. India – Selected Country
 3. India GDP Growth Trend (2000–2020)
 
-The story follows the Tailoring-In approach, moving from a global view to a specific country and finally to its detailed historical trend.
+The story follows the **Tailoring-In** approach, progressing from a global view to a specific country and finally to its detailed historical trend.
 
-🏁 21. Conclusion
+---
 
-This program provided practical experience in designing interactive dashboards and creating data-driven stories using Tableau Public.
+## 🏁 Conclusion
 
-The program demonstrated how multiple worksheets can be combined into a dashboard, how containers can be used to organize dashboard components, and how Action Filters can create interaction between visualizations.
+This program provided practical experience in creating interactive Tableau dashboards and data-driven stories.
 
-A Tableau Story was also created using the Tailoring-In technique, progressing from the global GDP Growth view to India and finally to India's GDP Growth trend from 2000 to 2020.
+The program demonstrated the use of worksheets, dashboard components, containers, Action Filters, interactive visualizations, and Tableau storytelling techniques to communicate data effectively.
 
-Overall, the program demonstrates the use of Tableau dashboards, containers, Action Filters, interactive visualizations, and storytelling to communicate data effectively.
+---
 
-🔗 Tableau Public Workbook
 
-Tableau Public Link:
-Add your Tableau Public published workbook link here.
+## 👩‍💻 Author
 
-👩‍💻 Author
+**Iqra Farheen**
 
-Iqra Farheen S
+
+This version will look much more like your **Program 3 README**: clean headings → short explanation → steps → result → conclusion, instead of the current very long 500-line document.
